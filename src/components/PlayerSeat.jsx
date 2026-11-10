@@ -161,6 +161,7 @@ export function PlayerSeat({
         </motion.div>
       )}
 
+      <div className="seat-anchor">
       <div
         className={`seat-bet bet-${betSide} ${seat.bet > 0 ? 'has-chips' : 'is-anchor'}`}
         ref={register?.bet}
@@ -228,6 +229,7 @@ export function PlayerSeat({
         <div className="seat-stack-chips">
           <Chip amount={seat.stack} showAmount={false} />
         </div>
+      </div>
       </div>
     </div>
   )
