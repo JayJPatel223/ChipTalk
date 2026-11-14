@@ -322,8 +322,8 @@ body {
 }
 
 .board-slot {
-  width: clamp(52px, 8.3vmin, 88px);
-  height: clamp(73px, 11.7vmin, 124px);
+  width: clamp(62px, 10vmin, 106px);
+  height: clamp(88px, 14vmin, 149px);
   border-radius: 0.5rem;
   border: 1.5px dashed rgba(255, 248, 210, 0.3);
   background: rgba(0, 0, 0, 0.12);
@@ -2079,8 +2079,8 @@ body {
   }
 
   .board-slot {
-    width: clamp(48px, 12vw, 72px);
-    height: clamp(67px, 16.8vw, 101px);
+    width: clamp(58px, 14.4vw, 86px);
+    height: clamp(80px, 20.2vw, 121px);
   }
 
   .seat-avatar-wrap {
