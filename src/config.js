@@ -9,5 +9,5 @@ export const GAME_CONFIG = {
 }
 
 export function formatChips(amount) {
-  return new Intl.NumberFormat('en-US').format(amount)
+  return `$${new Intl.NumberFormat('en-US').format(amount)}`
 }

@@ -12,5 +12,5 @@ test('pot odds are pot divided by the call amount', () => {
 
 test('call subtitle uses Check when there is nothing to call', () => {
   assert.equal(callSubtitle(0, 150), 'Check')
-  assert.equal(callSubtitle(100, 250), 'to call 100 · 2.5:1')
+  assert.equal(callSubtitle(100, 250), 'to call $100 · 2.5:1')
 })
