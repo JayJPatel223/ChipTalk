@@ -142,11 +142,11 @@ body {
 
 .table-rail {
   position: relative;
-  width: 96%;
-  height: 96%;
-  max-width: none;
-  max-height: 100%;
-  border-radius: 50% / 46%;
+  width: min(76vw, 1180px, calc(62dvh * 1.92));
+  height: auto;
+  aspect-ratio: 1.92 / 1;
+  max-height: 62dvh;
+  border-radius: 50% / 48%;
   padding: 42px 46px;
   background:
     repeating-linear-gradient(
@@ -360,59 +360,59 @@ body {
 
 .player-seat.slot-0 {
   left: 50%;
-  top: 96%;
+  top: 84%;
   width: 280px;
-  transform: translate(-50%, -88%);
+  transform: translate(-50%, -70%);
 }
 
 .player-seat.slot-1 {
-  left: 9%;
-  top: 68%;
+  left: 20%;
+  top: 58%;
 }
 
 .player-seat.slot-2 {
-  left: 22%;
-  top: 14%;
+  left: 28%;
+  top: 22%;
 }
 
 .player-seat.slot-3 {
-  left: 78%;
-  top: 14%;
+  left: 72%;
+  top: 22%;
 }
 
 .player-seat.slot-4 {
-  left: 91%;
-  top: 68%;
+  left: 80%;
+  top: 58%;
 }
 
 .seats-2 .slot-1 {
   left: 50%;
-  top: 12%;
+  top: 20%;
 }
 
 .seats-3 .slot-1 {
-  left: 11%;
-  top: 24%;
+  left: 22%;
+  top: 36%;
 }
 
 .seats-3 .slot-2 {
-  left: 89%;
-  top: 24%;
+  left: 78%;
+  top: 36%;
 }
 
 .seats-4 .slot-1 {
-  left: 10%;
-  top: 70%;
+  left: 20%;
+  top: 58%;
 }
 
 .seats-4 .slot-2 {
   left: 50%;
-  top: 13%;
+  top: 20%;
 }
 
 .seats-4 .slot-3 {
-  left: 90%;
-  top: 70%;
+  left: 80%;
+  top: 58%;
 }
 
 .seat-cards {
@@ -1943,9 +1943,10 @@ body {
   }
 
   .table-rail {
-    width: 100%;
-    height: 100%;
-    aspect-ratio: auto;
+    width: min(94%, 720px);
+    height: auto;
+    aspect-ratio: 3 / 4;
+    max-height: 68dvh;
     padding: 16px;
     border-radius: 1.75rem;
   }
@@ -1994,58 +1995,58 @@ body {
 
   .player-seat.slot-0 {
     width: 200px;
-    top: 97%;
-    transform: translate(-50%, -90%);
+    top: 86%;
+    transform: translate(-50%, -78%);
   }
 
   .player-seat.slot-1 {
-    left: 14%;
-    top: 72%;
+    left: 18%;
+    top: 62%;
   }
 
   .player-seat.slot-2 {
-    left: 20%;
-    top: 14%;
+    left: 24%;
+    top: 18%;
   }
 
   .player-seat.slot-3 {
-    left: 80%;
-    top: 14%;
+    left: 76%;
+    top: 18%;
   }
 
   .player-seat.slot-4 {
-    left: 86%;
-    top: 72%;
+    left: 82%;
+    top: 62%;
   }
 
   .seats-2 .slot-1 {
     left: 50%;
-    top: 13%;
+    top: 16%;
   }
 
   .seats-3 .slot-1 {
-    left: 13%;
-    top: 22%;
+    left: 18%;
+    top: 28%;
   }
 
   .seats-3 .slot-2 {
-    left: 87%;
-    top: 22%;
+    left: 82%;
+    top: 28%;
   }
 
   .seats-4 .slot-1 {
-    left: 13%;
-    top: 72%;
+    left: 18%;
+    top: 62%;
   }
 
   .seats-4 .slot-2 {
     left: 50%;
-    top: 13%;
+    top: 16%;
   }
 
   .seats-4 .slot-3 {
-    left: 87%;
-    top: 72%;
+    left: 82%;
+    top: 62%;
   }
 
   .setup-title {
@@ -2137,8 +2138,10 @@ body {
   }
 
   .table-rail {
-    width: 100%;
-    height: 100%;
+    width: min(96%, 420px);
+    height: auto;
+    aspect-ratio: 3 / 4;
+    max-height: 64dvh;
     padding: 12px;
     border-radius: 1.25rem;
   }
@@ -2153,7 +2156,7 @@ body {
   }
 
   .player-seat.slot-0 {
-    top: 98%;
+    top: 86%;
     width: 188px;
   }
 
