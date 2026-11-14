@@ -318,12 +318,12 @@ body {
 
 .community-row {
   display: flex;
-  gap: 0.55rem;
+  gap: 0.65rem;
 }
 
 .board-slot {
-  width: clamp(76px, 12.8vmin, 132px);
-  height: clamp(106px, 17.9vmin, 185px);
+  width: clamp(95px, 16vmin, 165px);
+  height: clamp(133px, 22.4vmin, 231px);
   border-radius: 0.5rem;
   border: 1.5px dashed rgba(255, 248, 210, 0.3);
   background: rgba(0, 0, 0, 0.12);
@@ -2079,8 +2079,8 @@ body {
   }
 
   .board-slot {
-    width: clamp(68px, 17vw, 102px);
-    height: clamp(95px, 24vw, 143px);
+    width: clamp(85px, 21vw, 128px);
+    height: clamp(119px, 29.4vw, 179px);
   }
 
   .seat-avatar-wrap {
