@@ -360,59 +360,59 @@ body {
 
 .player-seat.slot-0 {
   left: 50%;
-  top: 84%;
+  top: 82%;
   width: 280px;
   transform: translate(-50%, -70%);
 }
 
 .player-seat.slot-1 {
-  left: 20%;
-  top: 58%;
+  left: 24%;
+  top: 56%;
 }
 
 .player-seat.slot-2 {
-  left: 28%;
-  top: 22%;
+  left: 32%;
+  top: 24%;
 }
 
 .player-seat.slot-3 {
-  left: 72%;
-  top: 22%;
+  left: 68%;
+  top: 24%;
 }
 
 .player-seat.slot-4 {
-  left: 80%;
-  top: 58%;
+  left: 76%;
+  top: 56%;
 }
 
 .seats-2 .slot-1 {
   left: 50%;
-  top: 20%;
+  top: 22%;
 }
 
 .seats-3 .slot-1 {
-  left: 22%;
-  top: 36%;
+  left: 28%;
+  top: 38%;
 }
 
 .seats-3 .slot-2 {
-  left: 78%;
-  top: 36%;
+  left: 72%;
+  top: 38%;
 }
 
 .seats-4 .slot-1 {
-  left: 20%;
-  top: 58%;
+  left: 24%;
+  top: 56%;
 }
 
 .seats-4 .slot-2 {
   left: 50%;
-  top: 20%;
+  top: 22%;
 }
 
 .seats-4 .slot-3 {
-  left: 80%;
-  top: 58%;
+  left: 76%;
+  top: 56%;
 }
 
 .seat-cards {
