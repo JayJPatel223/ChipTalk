@@ -120,7 +120,9 @@ function App() {
           {error}
         </p>
       )}
-      {thinkingSeat && !blocking && <p className="turn-hint">{thinkingSeat.name} is thinking</p>}
+      {thinkingSeat && !blocking && (
+        <p className="turn-hint sr-live">{thinkingSeat.name} is thinking</p>
+      )}
       {view?.settled ? (
         <HandResult
           view={view}
