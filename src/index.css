@@ -143,10 +143,10 @@ body {
 
 .table-rail {
   position: relative;
-  width: min(84vw, 1360px, calc(70dvh * 1.92));
+  width: min(94vw, 1980px, calc(82dvh * 1.92));
   height: auto;
   aspect-ratio: 1.92 / 1;
-  max-height: 70dvh;
+  max-height: 82dvh;
   border-radius: 50% / 48%;
   padding: 42px 46px;
   background:
@@ -1099,7 +1099,7 @@ body {
 }
 
 .action-bar {
-  width: min(84vw, 1360px);
+  width: min(94vw, 1980px);
   margin: 0 auto;
   position: relative;
   z-index: 10;
@@ -1223,7 +1223,7 @@ body {
 }
 
 .action-error {
-  width: min(84vw, 1360px);
+  width: min(94vw, 1980px);
   margin: 0 auto;
   text-align: center;
   font-size: 0.88rem;
