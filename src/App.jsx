@@ -93,7 +93,8 @@ function App() {
             />
           )}
           <button type="button" className="back-setup-btn" onClick={backToSetup}>
-            Back to Setup
+            <span className="back-setup-full">Back to Setup</span>
+            <span className="back-setup-short">Setup</span>
           </button>
         </div>
       </header>

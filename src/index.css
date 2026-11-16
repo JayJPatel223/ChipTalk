@@ -38,7 +38,11 @@ body {
   overflow: hidden;
   display: grid;
   grid-template-rows: auto minmax(0, 1fr) auto;
-  padding: 0.35rem 0.7rem 0.35rem;
+  padding:
+    max(0.35rem, env(safe-area-inset-top, 0px))
+    max(0.7rem, env(safe-area-inset-right, 0px))
+    max(0.35rem, env(safe-area-inset-bottom, 0px))
+    max(0.7rem, env(safe-area-inset-left, 0px));
   gap: 0.2rem;
 }
 
@@ -82,6 +86,10 @@ body {
   border-radius: 999px;
   padding: 0.35rem 0.85rem;
   cursor: pointer;
+}
+
+.back-setup-short {
+  display: none;
 }
 
 .hud-brand {
@@ -139,16 +147,18 @@ body {
   justify-content: center;
   min-height: 0;
   overflow: hidden;
+  container-type: size;
 }
 
 .table-rail {
   position: relative;
-  width: min(94vw, 1980px, calc(82dvh * 1.92));
+  /* Fit inside the stage (header + action bar already reserved), not raw dvh. */
+  width: min(100cqw, calc(100cqh * 1.92), 1980px);
   height: auto;
   aspect-ratio: 1.92 / 1;
-  max-height: 82dvh;
+  max-height: 100cqh;
   border-radius: 50% / 48%;
-  padding: 42px 46px;
+  padding: clamp(18px, 4.2cqh, 42px) clamp(20px, 3.4cqw, 46px);
   background:
     repeating-linear-gradient(
       92deg,
@@ -1541,6 +1551,36 @@ body {
   .key-hint {
     display: none;
   }
+
+  .hint-toggle,
+  .back-setup-btn,
+  .sound-btn,
+  .bet-presets button {
+    min-height: 2.5rem;
+  }
+
+  .bet-slider-track {
+    height: 2.1rem;
+  }
+
+  .bet-slider {
+    height: 0.7rem;
+  }
+
+  .bet-slider::-webkit-slider-thumb {
+    width: 34px;
+    height: 34px;
+  }
+
+  .bet-slider::-moz-range-thumb {
+    width: 34px;
+    height: 34px;
+  }
+
+  .sound-volume input {
+    width: 88px;
+    height: 1.4rem;
+  }
 }
 
 .setup-shell {
@@ -1932,16 +1972,258 @@ body {
   margin-bottom: 0.7rem;
 }
 
-@media (max-width: 900px) {
+/* iPad / portrait tablets: Safari often reports desktop widths, so also key off aspect + height. */
+@media (orientation: portrait) and (max-width: 1180px),
+  (max-aspect-ratio: 10 / 11) and (max-width: 1180px),
+  (max-height: 980px) and (pointer: coarse) and (min-width: 600px) {
   .app-shell {
-    padding: 0.35rem 0.35rem 0.45rem;
+    padding: 0.3rem 0.45rem 0.4rem;
+    gap: 0.28rem;
     overflow-x: hidden;
   }
 
   .table-hud {
-    padding: 0 0.35rem 0.2rem;
+    padding: 0 0.2rem 0.1rem;
+    align-items: center;
     flex-wrap: wrap;
+    gap: 0.3rem 0.55rem;
+  }
+
+  .brand-title {
+    font-size: clamp(1.15rem, 2.6vw, 1.4rem);
+  }
+
+  .brand-kicker {
+    font-size: 0.55rem;
+    letter-spacing: 0.22em;
+  }
+
+  .hud-actions {
+    flex: 1 1 auto;
+    flex-wrap: wrap;
+    justify-content: flex-end;
     gap: 0.35rem;
+  }
+
+  .hud-blinds,
+  .hint-toggle,
+  .back-setup-btn,
+  .sound-btn {
+    font-size: 0.74rem;
+    padding: 0.4rem 0.7rem;
+  }
+
+  .back-setup-full {
+    display: none;
+  }
+
+  .back-setup-short {
+    display: inline;
+  }
+
+  .table-hud .sound-btn-label,
+  .table-hud .sound-volume-label {
+    display: none;
+  }
+
+  .table-hud .sound-btn {
+    padding: 0.4rem 0.55rem;
+  }
+
+  .table-hud .sound-volume input {
+    width: 72px;
+  }
+
+  .table-rail {
+    width: min(100cqw, calc(100cqh * 1.22));
+    aspect-ratio: 1.22 / 1;
+    max-height: 100cqh;
+    padding: clamp(14px, 2.8cqh, 28px) clamp(16px, 3cqw, 34px);
+    border-radius: 50% / 46%;
+  }
+
+  .table-rail::after {
+    inset: 12px 14px;
+  }
+
+  .felt-mark {
+    top: 7%;
+    width: min(34%, 160px);
+  }
+
+  .table-center {
+    top: 44%;
+    gap: 0.22rem;
+    min-width: min(78%, 520px);
+  }
+
+  .board-slot {
+    width: clamp(54px, 7.6cqw, 84px);
+    height: clamp(76px, 10.6cqw, 118px);
+  }
+
+  .community-row {
+    gap: 0.32rem;
+  }
+
+  .deck-slot {
+    top: 9%;
+    transform: translate(calc(-50% + 7.2rem), -50%);
+  }
+
+  .player-seat {
+    width: 140px;
+    gap: 0.22rem;
+  }
+
+  .player-seat.slot-0 {
+    width: min(72%, 280px);
+    top: 88%;
+    transform: translate(-50%, -68%);
+  }
+
+  .seats-2 .slot-1 {
+    left: 50%;
+    top: 16%;
+  }
+
+  .seats-3 .slot-1 {
+    left: 16%;
+    top: 24%;
+  }
+
+  .seats-3 .slot-2 {
+    left: 84%;
+    top: 24%;
+  }
+
+  .seats-4 .slot-1 {
+    left: 14%;
+    top: 52%;
+  }
+
+  .seats-4 .slot-2 {
+    left: 50%;
+    top: 15%;
+  }
+
+  .seats-4 .slot-3 {
+    left: 86%;
+    top: 52%;
+  }
+
+  .player-seat.slot-1 {
+    left: 14%;
+    top: 56%;
+  }
+
+  .player-seat.slot-2 {
+    left: 24%;
+    top: 17%;
+  }
+
+  .player-seat.slot-3 {
+    left: 76%;
+    top: 17%;
+  }
+
+  .player-seat.slot-4 {
+    left: 86%;
+    top: 56%;
+  }
+
+  .seat-avatar-wrap {
+    width: clamp(56px, 7.2cqw, 74px);
+    height: clamp(56px, 7.2cqw, 74px);
+  }
+
+  .seat-cards .playing-card.card-sm {
+    width: clamp(34px, 4.6cqw, 44px);
+    height: clamp(48px, 6.4cqw, 62px);
+  }
+
+  .hero-cards .playing-card.card-lg,
+  .hero-cards .card-flip-scene {
+    width: clamp(60px, 9cqw, 92px);
+    height: clamp(84px, 12.6cqw, 129px);
+  }
+
+  .seat-name {
+    font-size: clamp(0.9rem, 2.2cqw, 1.08rem);
+  }
+
+  .seat-stack {
+    font-size: clamp(0.84rem, 2cqw, 1rem);
+  }
+
+  .seat-stack-chips {
+    display: none;
+  }
+
+  .action-bar {
+    width: 100%;
+    max-width: 100%;
+    grid-template-columns: 1fr;
+    gap: 0.28rem;
+    padding: 0.32rem 0.45rem;
+  }
+
+  .action-buttons {
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.3fr) minmax(0, 1.05fr);
+    gap: 0.35rem;
+  }
+
+  .bet-slider-wrap {
+    grid-template-columns: auto 1fr auto;
+    grid-template-areas:
+      'label slider value'
+      'presets presets presets';
+    gap: 0.28rem 0.45rem;
+    min-width: 0;
+  }
+
+  .action-btn {
+    font-size: 0.86rem;
+    padding: 0.55rem 0.3rem;
+    min-height: 2.75rem;
+  }
+
+  .action-btn.call {
+    font-size: 0.98rem;
+    padding: 0.55rem 0.3rem 0.42rem;
+  }
+
+  .action-btn.fold {
+    font-size: 0.78rem;
+    padding: 0.48rem 0.25rem;
+  }
+
+  .action-btn-sub {
+    font-size: 0.56rem;
+  }
+
+  .bet-presets button {
+    padding: 0.4rem 0.2rem;
+    font-size: 0.72rem;
+    min-height: 2.35rem;
+  }
+
+  .history-drawer {
+    top: 4.2rem;
+    max-height: 42svh;
+  }
+}
+
+@media (max-width: 900px) {
+  .app-shell {
+    padding: 0.3rem 0.35rem 0.4rem;
+    overflow-x: hidden;
+  }
+
+  .table-hud {
+    padding: 0 0.25rem 0.15rem;
+    flex-wrap: wrap;
+    gap: 0.3rem;
   }
 
   .hud-actions {
@@ -1949,12 +2231,25 @@ body {
     justify-content: flex-end;
   }
 
+  .back-setup-full {
+    display: none;
+  }
+
+  .back-setup-short {
+    display: inline;
+  }
+
+  .table-hud .sound-btn-label,
+  .table-hud .sound-volume-label {
+    display: none;
+  }
+
   .table-rail {
-    width: 100%;
+    width: min(100cqw, calc(100cqh * 1.05));
     height: auto;
-    aspect-ratio: 3 / 4;
-    max-height: 68dvh;
-    padding: 16px;
+    aspect-ratio: 1.05 / 1;
+    max-height: 100cqh;
+    padding: 14px 16px;
     border-radius: 1.75rem;
   }
 
@@ -1968,7 +2263,7 @@ body {
   }
 
   .felt-mark {
-    top: 10%;
+    top: 8%;
     width: min(46%, 160px);
   }
 
@@ -1977,7 +2272,7 @@ body {
   }
 
   .table-center {
-    top: 44%;
+    top: 46%;
     gap: 0.18rem;
     min-width: 0;
   }
@@ -1998,44 +2293,44 @@ body {
   }
 
   .player-seat.slot-0 {
-    width: 200px;
-    top: 90%;
-    transform: translate(-50%, -78%);
+    width: min(70%, 200px);
+    top: 84%;
+    transform: translate(-50%, -58%);
   }
 
   .player-seat.slot-1 {
     left: 16%;
-    top: 58%;
+    top: 56%;
   }
 
   .player-seat.slot-2 {
     left: 24%;
-    top: 16%;
+    top: 18%;
   }
 
   .player-seat.slot-3 {
     left: 76%;
-    top: 16%;
+    top: 18%;
   }
 
   .player-seat.slot-4 {
     left: 84%;
-    top: 58%;
+    top: 56%;
   }
 
   .seats-2 .slot-1 {
     left: 50%;
-    top: 14%;
+    top: 16%;
   }
 
   .seats-3 .slot-1 {
     left: 16%;
-    top: 20%;
+    top: 22%;
   }
 
   .seats-3 .slot-2 {
     left: 84%;
-    top: 20%;
+    top: 22%;
   }
 
   .seats-4 .slot-1 {
@@ -2045,7 +2340,7 @@ body {
 
   .seats-4 .slot-2 {
     left: 50%;
-    top: 14%;
+    top: 16%;
   }
 
   .seats-4 .slot-3 {
@@ -2066,30 +2361,33 @@ body {
   }
 
   .hero-cards {
-    margin-bottom: 0.12rem;
-    gap: 0.25rem;
+    margin-bottom: 0.08rem;
+    gap: 0.18rem;
+    min-height: 0;
   }
 
   .hero-cards .playing-card.card-lg,
   .hero-cards .card-flip-scene {
-    width: clamp(52px, 14vw, 74px);
-    height: clamp(73px, 19.6vw, 104px);
+    width: clamp(42px, 10.5vw, 58px);
+    height: clamp(59px, 14.7vw, 81px);
   }
 
   .player-seat.is-hero .seat-bet {
-    right: -0.15rem;
-    top: 0;
-    transform: translate(100%, 0);
+    right: auto;
+    left: 50%;
+    top: auto;
+    bottom: calc(100% + 0.15rem);
+    transform: translate(-50%, 0);
   }
 
   .board-slot {
-    width: clamp(48px, 12.5vw, 72px);
-    height: clamp(67px, 17.5vw, 101px);
+    width: clamp(44px, 11vw, 64px);
+    height: clamp(62px, 15.4vw, 90px);
   }
 
   .seat-avatar-wrap {
-    width: 48px;
-    height: 48px;
+    width: 44px;
+    height: 44px;
   }
 
   .seat-plaque {
@@ -2119,7 +2417,8 @@ body {
     width: 100%;
     max-width: 100%;
     grid-template-columns: 1fr;
-    gap: 0.4rem;
+    gap: 0.35rem;
+    padding: 0.4rem 0.45rem;
   }
 
   .action-buttons {
@@ -2127,23 +2426,22 @@ body {
   }
 
   .bet-slider-wrap {
-    grid-template-columns: 1fr;
+    grid-template-columns: auto 1fr auto;
     grid-template-areas:
-      'label'
-      'slider'
-      'value'
-      'presets';
+      'label slider value'
+      'presets presets presets';
     min-width: 0;
   }
 
   .action-btn {
     font-size: 0.78rem;
     padding: 0.65rem 0.25rem;
+    min-height: 2.9rem;
   }
 
   .action-btn.call {
     font-size: 0.92rem;
-    padding: 0.78rem 0.25rem 0.55rem;
+    padding: 0.72rem 0.25rem 0.5rem;
   }
 
   .action-btn.fold {
@@ -2158,10 +2456,10 @@ body {
   }
 
   .table-rail {
-    width: min(96%, 420px);
+    width: min(100cqw, calc(100cqh * 0.86));
     height: auto;
-    aspect-ratio: 3 / 4;
-    max-height: 64dvh;
+    aspect-ratio: 0.86 / 1;
+    max-height: 100cqh;
     padding: 12px;
     border-radius: 1.25rem;
   }
@@ -2176,12 +2474,55 @@ body {
   }
 
   .player-seat.slot-0 {
-    top: 86%;
-    width: 188px;
+    top: 84%;
+    width: min(76%, 180px);
+    transform: translate(-50%, -58%);
   }
 
-  .player-seat.is-hero .seat-bet {
-    transform: translate(100%, 0);
+  .hero-cards .playing-card.card-lg,
+  .hero-cards .card-flip-scene {
+    width: clamp(40px, 11vw, 52px);
+    height: clamp(56px, 15.4vw, 73px);
+  }
+
+  .bet-slider-wrap {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      'label'
+      'slider'
+      'value'
+      'presets';
+  }
+
+  .bet-amount-cluster {
+    justify-content: flex-end;
+  }
+}
+
+/* Short viewports (browser chrome / desktop-site-on-iPad): keep controls usable */
+@media (max-height: 860px) and (max-width: 1200px) {
+  .action-bar {
+    grid-template-columns: 1fr;
+    gap: 0.3rem;
+    padding: 0.35rem 0.45rem;
+  }
+
+  .action-btn {
+    min-height: 2.7rem;
+    padding: 0.55rem 0.3rem;
+    font-size: 0.84rem;
+  }
+
+  .action-btn.call {
+    font-size: 0.95rem;
+    padding: 0.55rem 0.3rem 0.42rem;
+  }
+
+  .bet-slider-wrap {
+    grid-template-columns: auto 1fr auto;
+    grid-template-areas:
+      'label slider value'
+      'presets presets presets';
   }
 }
 
