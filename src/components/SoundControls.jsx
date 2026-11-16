@@ -40,7 +40,7 @@ export function SoundControls({ prefs, onMute, onVolume, onAmbient }) {
         aria-label={prefs.muted ? 'Sound off' : 'Sound on'}
       >
         <IconSound muted={prefs.muted} />
-        {prefs.muted ? 'Off' : 'Sound'}
+        <span className="sound-btn-label">{prefs.muted ? 'Off' : 'Sound'}</span>
       </button>
       <label className="sound-volume">
         <IconVolume />
@@ -65,7 +65,7 @@ export function SoundControls({ prefs, onMute, onVolume, onAmbient }) {
         aria-label={prefs.ambient ? 'Ambience on' : 'Ambience off'}
       >
         <IconAmbience />
-        Ambience
+        <span className="sound-btn-label">Ambience</span>
       </button>
     </div>
   )
