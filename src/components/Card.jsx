@@ -99,6 +99,33 @@ function NumberCard({ rank, suit }) {
   )
 }
 
+/**
+ * Large-index face for cards drawn small (opponents' cards, phone boards, the
+ * rankings guide). Hidden by default; CSS turns it on where the full face would
+ * be too small to read.
+ */
+function JumboFace({ rank, suit }) {
+  const fill = SUIT_META[suit]?.fill ?? '#12151c'
+  const isTen = rank === '10'
+  return (
+    <g className="card-jumbo">
+      <rect x="3" y="3" width="134" height="190" rx="12" fill="#fffef8" stroke="#cfc6b4" strokeWidth="1.5" />
+      <text
+        x={isTen ? 12 : 16}
+        y="84"
+        fill={fill}
+        fontFamily="Outfit, system-ui, sans-serif"
+        fontSize={isTen ? 70 : 86}
+        fontWeight="800"
+        letterSpacing={isTen ? -6 : 0}
+      >
+        {rank}
+      </text>
+      <SuitMark suit={suit} x={90} y={142} size={84} />
+    </g>
+  )
+}
+
 export function Card({ rank, suit, faceUp, size = 'md', className = '' }) {
   const dim = SIZES[size] ?? SIZES.md
   const label = formatCardName(rank, suit, faceUp)
@@ -115,6 +142,7 @@ export function Card({ rank, suit, faceUp, size = 'md', className = '' }) {
       {!faceUp && <CardBack />}
       {faceUp && FACE_RANKS.has(rank) && <FaceCard rank={rank} suit={suit} />}
       {faceUp && !FACE_RANKS.has(rank) && <NumberCard rank={rank} suit={suit} />}
+      {faceUp && <JumboFace rank={rank} suit={suit} />}
     </svg>
   )
 }

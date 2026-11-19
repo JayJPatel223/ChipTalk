@@ -190,7 +190,8 @@ export function ActionBar({
             min={sliderMin}
             max={sliderMax}
             step={1}
-            value={amount}
+            value={enabled && sizeLegal ? amount : ''}
+            placeholder="—"
             disabled={!enabled || !sizeLegal}
             aria-label={`${amountLabel} amount`}
             onChange={(event) => setClamped(Number(event.target.value))}
