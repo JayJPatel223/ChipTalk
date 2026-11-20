@@ -353,12 +353,19 @@ button {
   place-items: center;
 }
 
+/*
+ * Width and height are both set explicitly (no aspect-ratio): Safari/WebKit
+ * lets a child's percentage height stretch an aspect-ratio box past its ratio,
+ * which pushed the table under the controls on iPad.
+ */
 .table-rail {
   --ratio: 1.9;
   --rail-w: min(100cqw, calc(100cqh * var(--ratio)));
   position: relative;
   width: var(--rail-w);
-  aspect-ratio: var(--ratio);
+  height: calc(var(--rail-w) / var(--ratio));
+  min-width: 0;
+  min-height: 0;
   border-radius: 50% / 48%;
   padding: calc(var(--rail-w) * 0.03) calc(var(--rail-w) * 0.032);
   background:
@@ -456,7 +463,7 @@ button {
   top: 9%;
   transform: translate(-50%, -50%);
   width: calc(var(--u) * 15);
-  aspect-ratio: 2.6 / 1;
+  height: calc(var(--u) * 15 / 2.6);
   display: grid;
   place-items: center;
   pointer-events: none;
@@ -1434,7 +1441,7 @@ button {
 }
 
 /* Phone held sideways: the stage is short, so use a rounder oval to gain height. */
-@container stage (aspect-ratio >= 1.12) and (aspect-ratio < 1.8) and (height < 420px) {
+@container stage (aspect-ratio >= 1.3) and (aspect-ratio < 1.8) and (height < 420px) {
   .table-rail {
     --ratio: 1.62;
     border-radius: 50% / 46%;
@@ -1449,7 +1456,7 @@ button {
    Portrait table: phones upright, iPad upright, tall windows
    ========================================================================== */
 
-@container stage (aspect-ratio < 1.12) {
+@container stage (aspect-ratio < 1.3) {
   .table-rail {
     --ratio: 0.86;
     border-radius: 46% / 34%;
@@ -1704,7 +1711,7 @@ button {
 }
 
 /* Nearly square spaces (short phones, split screen): a rounder table uses the width. */
-@container stage (aspect-ratio >= 0.97) and (aspect-ratio < 1.12) {
+@container stage (aspect-ratio >= 0.97) and (aspect-ratio < 1.3) {
   .table-rail {
     --ratio: 1;
     border-radius: 44% / 40%;
@@ -1758,7 +1765,7 @@ button {
 }
 
 /* Small phones in portrait: jumbo faces on the board and hero cards. */
-@container stage (aspect-ratio < 1.12) {
+@container stage (aspect-ratio < 1.3) {
   @container felt (width < 400px) {
     .board-slot .card-jumbo {
       display: inline;
